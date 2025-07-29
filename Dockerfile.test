@@ -1,0 +1,15 @@
+ARG PYTHON_VERSION=3.11
+FROM python:${PYTHON_VERSION}-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements-dev.txt .
+RUN pip install --no-cache-dir -r requirements-dev.txt
+
+# Copy application code
+COPY ./app ./app
+COPY ./tests ./tests
+
+# Run tests
+CMD ["pytest", "-v", "tests/"]
