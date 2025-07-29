@@ -4,7 +4,7 @@ FROM python:${PYTHON_VERSION}-slim
 WORKDIR /app
 
 # Install dependencies
-COPY requirements-dev.txt .
+COPY requirements*.txt ./
 RUN pip install --no-cache-dir -r requirements-dev.txt
 
 # Copy application code
